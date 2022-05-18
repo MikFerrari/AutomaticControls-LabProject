@@ -1,5 +1,5 @@
 clear; clc;
-Nprova = 16;
+Nprova = 19;
 simulation.author = 'R';
 startTimer = tic;
 
@@ -10,14 +10,14 @@ umax = system.getUMax;
 
 %% Setting segnale eccitante
 % Chirp
-w0_chirp = 1; w1_chirp = 3.1416e3;       % wide, main chirp
+w0_chirp = 10; w1_chirp = 3.1416e3;       % wide, main chirp
 w0b_chirp = 10; w1b_chirp = 100;     % narrow, secondary chirp 1 
 w0c_chirp = 50; w1c_chirp = 1000;     % narrow, secondary chirp 2
-ampiezza_chirp = 65;
+ampiezza_chirp = 100;
 
 % Portante
-w_portante = w0_chirp/20;
-ampiezza_portante = 65;
+w_portante = 1;
+ampiezza_portante = 20;
 T_portante = 2*pi/w_portante;
 
 %% Costruzione del segnale eccitante
@@ -43,8 +43,8 @@ chirp_wide = chirp(t,w0_chirp/2/pi,t(end),w1_chirp/2/pi,'logarithmic',90); % chi
 chirp_narrow1 = chirp(t,w0b_chirp/2/pi,t(end),w1b_chirp/2/pi,'logarithmic',135); % chirp concentrato attorno alla risonanza
 chirp_narrow2 = chirp(t,w0c_chirp/2/pi,t(end),w1c_chirp/2/pi,'logarithmic',180); % chirp concentrato attorno al polo dell'attrito viscoso
 
-chirp_total = (chirp_wide + chirp_narrow1 + chirp_narrow2)/max(chirp_wide + chirp_narrow1 + chirp_narrow2);
-% chirp_total = chirp_wide;
+% chirp_total = (chirp_wide + chirp_narrow1 + chirp_narrow2)/max(chirp_wide + chirp_narrow1 + chirp_narrow2);
+chirp_total = chirp_wide;
 
 chirpSignal = ampiezza_chirp*chirp_total;
 
@@ -56,7 +56,7 @@ plot(t,input_signal);
 xlabel('time'); ylabel('input - identification'); title('Segnale eccitante - Identificazione'); grid on;
 
 %% Selezione dei sottosistemi di cui eseguire l'identificazione
-joint1 = false;
+joint1 = true;
 joint2 = true;
 
 if joint1 && ~ joint2
@@ -176,7 +176,7 @@ title(tl,'Segnale eccitante e risposta del sistema')
 simulationName = strcat(simulation.author,'_simulation_',num2str(Nprova));
 simulationDirectory = strcat('.\simulations\identification\',simulationName);
 
-simulation.description = '3xchirp + portante - j1';
+simulation.description = 'chirp + portante - j1+j2';
 simulation.w0chirp = w0_chirp;
 simulation.w1chirp = w1_chirp;
 simulation.wportante = w_portante;
@@ -190,8 +190,12 @@ simulation.joint1 = joint1;
 simulation.joint2 = joint2;
 simulation.durata_teorica = durata_teorica;
 simulation.durata_reale = durata_reale;
-simulation.fig_j1 = fig_j1;
-simulation.fig_j2 = fig_j2;
+if joint1
+    simulation.fig_j1 = fig_j1;
+end
+if joint2
+    simulation.fig_j2 = fig_j2;
+end
 simulation.fig_res = fig_res;
 simulation.fig_inputSignal = fig_inputSignal;
 

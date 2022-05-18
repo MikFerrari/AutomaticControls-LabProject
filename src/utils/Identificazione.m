@@ -4,7 +4,7 @@ clear; close all; clc;
 startTimer = tic;
 %%
 simulation.author = 'M';
-Nprova = 42;
+Nprova = 44;
 %% 
 % Aggiungo opzione per evitare la molteplicità di 360° nella base
 
@@ -77,7 +77,7 @@ plot(t,input_signal);
 xlabel('time'); ylabel('input - identification'); title('Segnale eccitante - Identificazione'); grid on;
 % Selezione dei sottosistemi di cui eseguire l'identificazione
 
-joint1 = true;
+joint1 = false;
 joint2 = true;
 
 if joint1 && ~ joint2

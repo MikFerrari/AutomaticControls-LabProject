@@ -3,7 +3,7 @@
 clear; close all; clc;
 %%
 simulation.author = 'M';
-Nprova = 42;
+Nprova = 44;
 %% 
 % Aggiungo opzione per evitare la molteplicità di 360° nella base
 
@@ -98,7 +98,7 @@ plot(t,input_signal);
 xlabel('time'); ylabel('input - validation'); title('Segnale eccitante - Validazione'); grid on;
 % Selezione dei sottosistemi di cui eseguire la validazione
 
-joint1 = true;
+joint1 = false;
 joint2 = true;
 
 if joint1 && ~ joint2
@@ -161,7 +161,7 @@ bode_opts.PhaseWrapping = 'on';
 % per plottarli insieme alla f.d.t della validazione)
 
 simulation.author = 'M';
-Nprova_ident = 42;
+Nprova_ident = 44;
 
 modelName = strcat(simulation.author,'_model_', num2str(Nprova_ident));
 directoryModel = strcat('.\estimated_models\data\',modelName);
@@ -383,7 +383,7 @@ save(directoryModel,'-struct','validatedModel')
 % =>| _*Risultati compatibili, anche se il calcolo fatto manualmente sembra più 
 % accurato*_
 
-compare(freq_resp_valid_joint1,modelC_joint1)
-compare(freq_resp_valid_joint1,modelD_joint1)
-compare(freq_resp_valid_joint2,modelC_joint2)
-compare(freq_resp_valid_joint2,modelD_joint2)
+% compare(freq_resp_valid_joint1,modelC_joint1)
+% compare(freq_resp_valid_joint1,modelD_joint1)
+% compare(freq_resp_valid_joint2,modelC_joint2)
+% compare(freq_resp_valid_joint2,modelD_joint2)
