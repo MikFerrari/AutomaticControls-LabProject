@@ -3,9 +3,9 @@ classdef PID_filt_Controller < BaseController
     properties  (Access = protected)
         xi                          % azione integrale
         Ki                          % coefficiente azione integrale
-        n = 1;                      % ordine controllore
-        u_PD_past = zeros(n,1);     % buffer azioni di controllo passate
-        e_past = zeros(n,1);        % buffer errori passati
+        n                           % ordine controllore
+        u_PD_past                   % buffer azioni di controllo passate
+        e_past                      % buffer errori passati
         A                           % coefficienti azione di controllo eq. differenze
         B                           % coefficienti errori eq. differenze
         Kaw                         % costante antiwindup
@@ -19,6 +19,8 @@ classdef PID_filt_Controller < BaseController
             obj.xi=0;
             obj.Ki=Ki;
             obj.n=length(coeff_den)-1;
+            obj.u_PD_past = zeros(obj.n,1); 
+            obj.e_past = zeros(obj.n,1);
             obj.A=-coeff_den(2:end); 
             obj.B=coeff_num;
             obj.Kaw=Kaw; 
