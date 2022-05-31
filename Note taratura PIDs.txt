@@ -1,0 +1,114 @@
+J1
+Interno: Kp = 300; Tfu = 1/63; MS=2;
+Esterno: Kp = 40; Ki = 0.01; -> pm = 52
+
+J2
+Interno: Kp = 100; Tfu = 1/55; MS=2;
+Esterno: Kp = 45; Ki = 0.1; 
+
+MEDIA: 29.5 NOTE: anomali picchi a 24
+_______________________________________________________
+
+J1
+Interno: Kp = 300; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.01; -> pm = 62.2
+
+J2
+Interno: Kp = 100; Tfu = 1/55; MS=2;
+Esterno: Kp = 45; Ki = 0.1;
+
+MEDIA: 30.7 -> poco stabile, min 25.6
+_______________________________________________________
+
+J1
+Interno: Kp = 300; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.01;
+
+J2
+Interno: Kp = 100; Tfu = 1/55; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+MEDIA: 30.4 -> più stabile, punteggio minimo 28.4
+_______________________________________________________
+Aumento Kp interno j1
+
+J1
+Interno: Kp = 350; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.01;
+
+J2
+Interno: Kp = 100; Tfu = 1/55; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+MEDIA: peggiore
+_______________________________________________________
+Diminuisco Kp interno j1
+
+J1
+Interno: Kp = 250; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.01; -> pm = 59
+
+J2
+Interno: Kp = 100; Tfu = 1/55; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+MEDIA: 30.9 -> molto stabile
+_______________________________________________________
+
+J1
+Interno: Kp = 270; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.01;
+
+J2
+Interno: Kp = 100; Tfu = 1/55; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+MEDIA: 30.7 -> alcuni picchi a 27
+_______________________________________________________
+Aumento Ki interno.
+
+J1
+Interno: Kp = 270; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+J2
+Interno: Kp = 100; Tfu = 1/55; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+MEDIA: 30.6 -> un picco a 25
+______________________________________________________
+Aumento Kp int j2.
+
+J1
+Interno: Kp = 270; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+J2
+Interno: Kp = 150; Tfu = 1/55; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+MEDIA: 30.8
+______________________________________________________
+Aumento Kp int j2.
+
+J1
+Interno: Kp = 250; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+J2
+Interno: Kp = 250; Tfu = 1/55; MS=2;
+Esterno: Kp = 35; Ki = 0.1;
+
+MEDIA: 30.84
+______________________________________________________
+Riduco entrambi i Ki a 0.01
+
+J1
+Interno: Kp = 250; Tfu = 1/63; MS=2;
+Esterno: Kp = 35; Ki = 0.01;
+
+J2
+Interno: Kp = 250; Tfu = 1/55; MS=2;
+Esterno: Kp = 35; Ki = 0.01;
+
+MEDIA: 31.1

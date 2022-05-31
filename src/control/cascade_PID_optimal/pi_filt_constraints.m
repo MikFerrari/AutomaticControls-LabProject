@@ -1,14 +1,13 @@
-function [cin,ceq]=pid_filt_constraints(x,P,w_vector,MS,wh,Fh_max,wl,Dl_max,PM_min)
+function [cin,ceq]=pi_filt_constraints(x,P,w_vector,MS,wh,Fh_max,wl,Dl_max,PM_min)
     % cin<=0
     % ceq==0
     
     ceq=[];
     
-    Kp=x(1); Ki=x(2); Kd=x(3); Tfd=x(4); Tfu=x(5);
+    Kp=x(1); Ki=x(2);
     
     s=tf('s');
-
-    C=(Kp+Ki/s+Kd*s/(Tfd*s+1))*1/(Tfu*s+1);
+    C=(Kp+Ki/s);
     
     C_fr=freqresp(C,w_vector);  % frequency response
     P_fr=freqresp(P,w_vector);
