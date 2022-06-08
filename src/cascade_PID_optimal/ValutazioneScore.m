@@ -4,7 +4,7 @@ clear; clc;
 model_initialization;
 
 % accelerazione massima e Rest Time
-cs.setMaxAcceleration(25);
+cs.setMaxAcceleration(30);
 cs.setRestTime(0.1);
 
 % loading dei controllori
@@ -41,3 +41,7 @@ fprintf('lo score è %f\n',score);
 warning off
 cs.showResults(results)
 warning on
+
+%% Salvataggio risultati
+set(gcf,'renderer','painters')
+exportgraphics(gcf,'.\presentation\valutazione\acc30.emf');
