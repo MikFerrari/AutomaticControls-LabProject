@@ -8,8 +8,8 @@ Il repository è strutturato nel modo seguente:
 ProjectEcho
 	|
 	|--- estimated_models
-	|		|--- data -> strutture dati contenenti i parametri dei modelli identificati 
-	|		|--- figures -> figure (.fig) dei modelli identificati 
+	|		|--- data -> strutture dati parametri modelli identificati 
+	|		|--- figures -> figure (.fig) modelli identificati 
 	|
 	|--- model_scripts -> classi e funzioni fornite inizialmente
 	|
@@ -19,12 +19,12 @@ ProjectEcho
 	|
 	|--- simulations
 	|		|--- identification
-	|		|		|--- data -> strutture dati contenenti i risultati delle simulazioni di identificazione
-	|		|		|--- figures -> figure (.fig) dei risultati delle simulazioni di identificazione
+	|		|		|--- data -> strutture dati risultati simulazioni di identificazione
+	|		|		|--- figures -> figure (.fig) risultati simulazioni di identificazione
 	|		|
 	|		|--- validation
-	|				|--- data -> strutture dati contenenti i risultati delle simulazioni di validazione
-	|				|--- figures -> figure (.fig) dei risultati delle simulazioni di validazione
+	|				|--- data -> strutture dati risultati simulazioni di validazione
+	|				|--- figures -> figure (.fig) risultati simulazioni di validazione
 	|
 	|--- src
 	|		|--- cascade_PID_optimal -> tuning, discretizzazione e valutazione score
@@ -36,8 +36,8 @@ ProjectEcho
 	|		|--- utils -> inizializzazione, studio ordine dei modelli, funzionalità aggiuntive
 	|
 	|--- validated_models
-	|		|--- data -> strutture dati contenenti i parametri dei modelli validati 
-	|		|--- figures -> figure (.fig) dei modelli validati 
+	|		|--- data -> strutture dati parametri modelli validati 
+	|		|--- figures -> figure (.fig) modelli validati 
 	|
 	|--- Note taratura PID.txt -> Log fine-tuning manuale
 	|
