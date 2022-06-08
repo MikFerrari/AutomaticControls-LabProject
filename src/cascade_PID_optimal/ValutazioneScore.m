@@ -1,10 +1,10 @@
-clear; clc; close all;
+clear; clc;
 
 % inizializzazione del modello
 model_initialization;
 
 % accelerazione massima e Rest Time
-cs.setMaxAcceleration(15);
+cs.setMaxAcceleration(25);
 cs.setRestTime(0.1);
 
 % loading dei controllori
@@ -34,10 +34,10 @@ cs.initialize;
 
 %% Simulazione e calcolo dello score
 % simulo il sistema per la valutazione -> "fast" fa 5 esecuzioni || "complete" fa 5 x 5 esecuzioni
-[score,results] = cs.evalution("complete");
+[score,results] = cs.evalution("fast");
 fprintf('lo score è %f\n',score);
 
 % grafico i risultati
 warning off
-% cs.showResults(results)
+cs.showResults(results)
 warning on
