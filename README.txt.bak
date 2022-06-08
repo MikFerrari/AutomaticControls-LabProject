@@ -8,36 +8,36 @@ Il repository è strutturato nel modo seguente:
 ProjectEcho
 	|
 	|--- estimated_models
-	|		|--- data -> strutture dati parametri modelli identificati 
-	|		|--- figures -> figure (.fig) modelli identificati 
+	|	|--- data -> strutture dati parametri modelli identificati 
+	|	|--- figures -> figure (.fig) modelli identificati 
 	|
 	|--- model_scripts -> classi e funzioni fornite inizialmente
 	|
 	|--- presentation
-	|		|--- cartelle contenenti schemi e plot esportati
-	|		|--- Presentazione_GruppoEcho.pptx -> Presentazione Powerpoint progetto
+	|	|--- cartelle contenenti schemi e plot esportati
+	|	|--- Presentazione_GruppoEcho.pptx -> Presentazione Powerpoint progetto
 	|
 	|--- simulations
-	|		|--- identification
-	|		|		|--- data -> strutture dati risultati simulazioni di identificazione
-	|		|		|--- figures -> figure (.fig) risultati simulazioni di identificazione
-	|		|
-	|		|--- validation
-	|				|--- data -> strutture dati risultati simulazioni di validazione
-	|				|--- figures -> figure (.fig) risultati simulazioni di validazione
+	|	|--- identification
+	|	|	|--- data -> strutture dati risultati simulazioni di identificazione
+	|	|	|--- figures -> figure (.fig) risultati simulazioni di identificazione
+	|	|
+	|	|--- validation
+	|			|--- data -> strutture dati risultati simulazioni di validazione
+	|			|--- figures -> figure (.fig) risultati simulazioni di validazione
 	|
 	|--- src
-	|		|--- cascade_PID_optimal -> tuning, discretizzazione e valutazione score
-	|		|--- controllers
-	|		|		|--- classes -> classi che implementano i controllori (PID, Cascata, SCARA) 
-	|		|		|--- params -> parametri tarati e salvati
-	|		|
-	|		|--- identification -> identificazione e validazione
-	|		|--- utils -> inizializzazione, studio ordine dei modelli, funzionalità aggiuntive
+	|	|--- cascade_PID_optimal -> tuning, discretizzazione e valutazione score
+	|	|--- controllers
+	|	|	|--- classes -> classi che implementano i controllori (PID, Cascata, SCARA) 
+	|	|	|--- params -> parametri tarati e salvati
+	|	|
+	|	|--- identification -> identificazione e validazione
+	|	|--- utils -> inizializzazione, studio ordine dei modelli, funzionalità aggiuntive
 	|
 	|--- validated_models
-	|		|--- data -> strutture dati parametri modelli validati 
-	|		|--- figures -> figure (.fig) modelli validati 
+	|	|--- data -> strutture dati parametri modelli validati 
+	|	|--- figures -> figure (.fig) modelli validati 
 	|
 	|--- Note taratura PID.txt -> Log fine-tuning manuale
 	|

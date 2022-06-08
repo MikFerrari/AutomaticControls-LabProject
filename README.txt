@@ -23,8 +23,8 @@ ProjectEcho
 	|	|	|--- figures -> figure (.fig) risultati simulazioni di identificazione
 	|	|
 	|	|--- validation
-	|			|--- data -> strutture dati risultati simulazioni di validazione
-	|			|--- figures -> figure (.fig) risultati simulazioni di validazione
+	|		|--- data -> strutture dati risultati simulazioni di validazione
+	|		|--- figures -> figure (.fig) risultati simulazioni di validazione
 	|
 	|--- src
 	|	|--- cascade_PID_optimal -> tuning, discretizzazione e valutazione score
