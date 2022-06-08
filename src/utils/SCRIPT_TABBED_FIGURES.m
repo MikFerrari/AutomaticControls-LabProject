@@ -1,3 +1,5 @@
+%% Plot several figures in the same window in different tabs
+
 desktop = com.mathworks.mde.desk.MLDesktop.getInstance;
 myGroup = desktop.addGroup('myGroup');
 desktop.setGroupDocked('myGroup', 0);

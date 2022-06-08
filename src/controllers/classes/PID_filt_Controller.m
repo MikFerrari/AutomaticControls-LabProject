@@ -1,16 +1,16 @@
 classdef PID_filt_Controller < BaseController 
     
     properties  (Access = protected)
-        xi                          % azione integrale
-        Ki                          % coefficiente azione integrale
-        n                           % ordine controllore
-        u_PD_past                   % buffer azioni di controllo passate
-        e_past                      % buffer errori passati
-        A                           % coefficienti azione di controllo eq. differenze
-        B                           % coefficienti errori eq. differenze
-        Kaw=0;                      % costante antiwindup
-        Kaw_ext=0;                  % costante antiwindup esterna
-        sat_flag=false;             % true se il controllore sta saturando 
+        xi                 % azione integrale
+        Ki                 % coefficiente azione integrale
+        n                  % ordine controllore
+        u_PD_past          % buffer azioni di controllo passate
+        e_past             % buffer errori passati
+        A                  % coefficienti azione di controllo eq. differenze
+        B                  % coefficienti errori eq. differenze
+        Kaw=0;             % costante antiwindup interna
+        Kaw_ext=0;         % costante antiwindup esterna
+        sat_flag=false;    % flag antiwindup esterno: true se l'azione di controllo sta saturando 
     end
 
     methods
@@ -38,15 +38,15 @@ classdef PID_filt_Controller < BaseController
 
         function u=computeControlAction(obj,reference,y,TR_M,tracked_val,u_ffw)
             %% Implementazione equazione alle differenze (PD component)
-            e_k = reference-y;               % errore corrente
-            u_PD_k = obj.B(1)*e_k;           % azione di controllo istante presente
+            e_k = reference-y;        % errore corrente
+            u_PD_k = obj.B(1)*e_k;    % azione di controllo istante presente
             
             for i = 1:obj.n
                 u_PD_k = u_PD_k+obj.B(1+i)*obj.e_past(i)+obj.A(i)*obj.u_PD_past(i);
             end
             
             %% Aggiornamento buffer di errori e azioni di controllo passate
-            for i = obj.n:-1:2    % ad ogni passo far scalare di 1 posto gli elementi di ciascun vettore dei valori passati
+            for i = obj.n:-1:2    % ad ogni passo scala di 1 posto gli elementi di ciascun vettore dei valori passati
                 obj.e_past(i) = obj.e_past(i-1);
                 obj.u_PD_past(i) = obj.u_PD_past(i-1);
             end
@@ -55,15 +55,15 @@ classdef PID_filt_Controller < BaseController
             obj.e_past(1) = e_k;
             obj.u_PD_past(1) = u_PD_k;
 
-            %% Calcolo azione di controllo totale (PD+integrale+ffw)
+            %% Calcolo azione di controllo totale (integrale+PD+ffw)
             u=obj.xi+u_PD_k+u_ffw;
 
             %% Controllo saturazione interna
             if (u>obj.umax)
-                usat=obj.umax;
+                usat=obj.umax;  % saturazione variabile di controllo positiva
                 obj.sat_flag=true;
             elseif (u<-obj.umax)
-                usat=-obj.umax;
+                usat=-obj.umax; % saturazione variabile di controllo negativa
                 obj.sat_flag=true;
             else
                 usat=u;

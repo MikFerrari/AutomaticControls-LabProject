@@ -1,8 +1,8 @@
 classdef CascadeController < BaseController 
     
     properties  (Access = protected)
-        PID_pos % PID loop esterno
-        PID_vel % PID loop interno
+        PID_pos    % controllore PID loop esterno
+        PID_vel    % controllore PID loop interno
     end
 
     methods
@@ -14,33 +14,31 @@ classdef CascadeController < BaseController
         end
         
         function setUMax(obj,umax)
-            % setto limiti di coppia controllori giunti
+            %% settaggio limiti di coppia controllori giunti
             setUMax@BaseController(obj,umax);
-            obj.PID_vel.setUMax(obj.umax);
-            % solo il controllore interno è direttamente
-            % collegato all'attuatore, che è soggetto a saturazione
+            obj.PID_vel.setUMax(obj.umax);    % controllore interno direttamente collegato all'attuatore, soggetto a saturazione
         end
         
         function initialize(obj)
-            %inizializzo controllori
+            %% inizializzazione controllori
+            % setta a zero l'azione integrale di ogni controllore
             obj.PID_pos.initialize;
             obj.PID_vel.initialize;
         end
 
         function u=computeControlAction(obj,reference,y,tau_ffw)
-            % calcolo azione di controllo
-
-            % misure
+            %% calcolo azione di controllo
+            % misure di posizione e velocità
             pos=y(1);
             vel=y(2);
             
-            % setpoint
+            % setpoint di posizione e velocità
             sp_pos=reference(1);
             sp_vel=reference(2);
             
             % azioni di controllo
-            u_pos=obj.PID_pos.computeControlAction(sp_pos,pos,obj.PID_vel.getSat_flag,vel,sp_vel); % controllore 1
-            u=obj.PID_vel.computeControlAction(u_pos,vel,[],[],tau_ffw); % controllore 2
+            u_pos=obj.PID_pos.computeControlAction(sp_pos,pos,obj.PID_vel.getSat_flag,vel,sp_vel);    % controllore esterno di posizione
+            u=obj.PID_vel.computeControlAction(u_pos,vel,[],[],tau_ffw);                              % controllore interno di velocità
         end
 
     end

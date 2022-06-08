@@ -1,6 +1,17 @@
 function trans_func = fit_5order_model(dc_gain,M_Rp1_val,M_Rz1_val,M_Rp2_val,M_Rz2_val, ...
                                        w_h_val,w_Rp1_val,w_Rz1_val,w_Rp2_val,w_Rz2_val)
-    
+% FIT_5ORDER_MODEL Fitting manuale di un modello con 3 poli e 2 zeri.
+%
+%   Il modello è della forma:
+%   model = k*((s^2+2*xi_z1*w_nz1*s+w_nz1^2)*(s^2+2*xi_z2*w_nz2*s+w_nz2^2)) / ...
+%              ((s+w_h)*(s^2+2*xi_p1*w_np1*s+w_np1^2)*(s^2+2*xi_p2*w_np2*s+w_np2^2));
+% 
+%   con
+%   - costante di trasferimento k (gain)
+%   - 1 polo reale
+%   - 2 coppie di poli complessi e coniugati
+%   - 2 coppie di zeri complessi e coniugati
+
     syms s k w_h w_nz1 w_np1 xi_p1 xi_z1 w_Rp1 M_Rp1 w_Rz1 M_Rz1 ...
                  w_nz2 w_np2 xi_p2 xi_z2 w_Rp2 M_Rp2 w_Rz2 M_Rz2
 
